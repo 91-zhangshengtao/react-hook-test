@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import LikeButton from './components/02_likeButton'
+import LikeButton from './components/likeButton'
 
 
 // userContext
