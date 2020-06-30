@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+// import logo from './logo.svg';
 import './App.css';
+import LikeButton from './components/02_likeButton'
 
-function App() {
+
+// userContext
+interface IThemeProps {
+  [key: string]: {color: string; background: string;}
+}
+const themes: IThemeProps = {
+ 'light': {
+   color: '#000',
+   background: '#eee',
+ },
+ 'dark': {
+    color: '#fff',
+    background: '#222',
+  }
+}
+export const ThemeContext = React.createContext(themes.light)
+
+const App: React.FC = () => {
+  const [ show, setShow ] = useState(true)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeContext.Provider value={themes.dark}>
+          <h2>dog show: {`xxx`}</h2>
+          <img src={`https://dss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1820154701,1076679668&fm=5`} alt={`图${`xxx`}`}/>
+          <LikeButton></LikeButton>
+      </ThemeContext.Provider>
     </div>
   );
 }
